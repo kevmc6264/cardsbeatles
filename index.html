@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Hover Card Carousel</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f3f3f3;
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        overflow: hidden;
+      }
+      .carousel-container {
+        width: 90%;
+        max-width: 1200px;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .carousel {
+        display: flex;
+        gap: 30px;
+        transition: transform 0.5s ease-in-out;
+      }
+      .card {
+        width: 350px;
+        height: 500px;
+        background: linear-gradient(145deg, #ffffff, #e3e3e3);
+        border-radius: 15px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.15),
+          -5px -5px 15px rgba(255, 255, 255, 0.7);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        font-size: 1.2em;
+        transform-style: preserve-3d;
+        transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+        padding: 15px;
+        position: relative;
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+      .card img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-top: 50px;
+        border: 5px solid #ffffff;
+        position: relative;
+        z-index: 2;
+      }
+      .button {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 12px 25px;
+        background-color: #d3d3d3;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+        transition: background 0.3s, transform 0.2s ease-in-out;
+      }
+      .button:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+      }
+      .fade-left,
+      .fade-right {
+        position: absolute;
+        top: 0;
+        width: 15%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 2;
+      }
+      .fade-left {
+        left: 0;
+        background: linear-gradient(
+          to right,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0)
+        );
+      }
+      .fade-right {
+        right: 0;
+        background: linear-gradient(
+          to left,
+          rgba(255, 255, 255, 1),
+          rgba(255, 255, 255, 0)
+        );
+      }
+      .carousel-btn {
+        position: absolute;
+        background: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        font-size: 18px;
+        border-radius: 5px;
+        z-index: 10;
+      }
+      .prev {
+        left: 10px;
+      }
+      .next {
+        right: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="carousel-container">
+      <button class="carousel-btn prev">&#10094;</button>
+      <div class="carousel">
+        <!-- Card 1 -->
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/Fab%204.jpg?v=1738718460785"
+            alt="Beatles"
+          />
+          <h2>Beatles</h2>
+          <p>🎸 Legendary British rock stars</p>
+          <a href="https://beatles-2023.glitch.me" class="button">View Model</a>
+        </div>
+        <!-- Card 2 -->
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/Human%20body.jpg?v=1738718445153"
+            alt="Human Body"
+          />
+          <h2>Human Body</h2>
+          <p>🧬 A masterpiece of biological complexity</p>
+          <a href="https://humanbody.glitch.me" class="button">View Model</a>
+        </div>
+        <!-- Card 3 -->
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/Skull.jpg?v=1738718458145"
+            alt="Skull"
+          />
+          <h2>Skull</h2>
+          <p>💀 Eerie symbol of mortality</p>
+          <a href="https://explodingskull.glitch.me" class="button">View Model</a>
+        </div>
+        <!-- Card 4 -->
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/thumbnails_poster.webp?v=1742304096186"
+            alt="Mclaren"
+          />
+          <h2>Mclaren</h2>
+          <p>🏎️ Ultimate F1 speed machine</p>
+          <a href="https://f1-2021-mclaren.glitch.me" class="button">View Model</a>
+        </div>
+        <!-- Card 5 -->
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/poster.png?v=1738748701440"
+            alt="Black Honey Robotic Arm"
+          />
+          <h2>Black Honey Robotic Arm</h2>
+          <p>🤖 Futuristic robotic precision arm</p>
+          <a href="https://black-honey-robotic-arm.glitch.me" class="button">View Model</a>
+        </div>
+        <!-- Card 6 -->
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/Curiosity%20Rover.png?v=1741299816884"
+            alt="Curiosity Rover"
+          />
+          <h2>Curiosity Rover</h2>
+          <p>🚀 Mars explorer robotic pioneer</p>
+          <a href="https://curiosityrover2.glitch.me" class="button">View Model</a>
+        </div>
+    
+         <!-- Card 7 --> 
+       <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/poster.webp?v=1743768731589"
+            alt="Tokyo Tower"
+          />
+          <h2>Tokyo Tower</h2>
+          <p>Tokyo Tower</p>
+          <a href="https://tokyo-tower.glitch.me" class="button">View Model</a>
+        </div> 
+          <!-- Card 8 --> 
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/London.png?v=1744656727405"
+            alt="The City of London"
+          />
+          <h2>The City of London</h2>
+          <p>The City of London</p>
+          <a href="https://basiclondonmodel.glitch.me" class="button">View Model</a>
+        </div>
+         <!-- Card 8 --> 
+        <div class="card">
+          <img
+            src="https://cdn.glitch.global/442b5580-cc32-4b95-b51b-2d1d084f28ed/Liverpool.png?v=1744656918217"
+            alt="Liverpool"
+          />
+          <h2>Liverpool</h2>
+          <p>Liverpool</p>
+          <a href="https://basicliverpoolmodel.glitch.me" class="button">View Model</a>
+        </div>
+        
+         
+      </div>
+      <button class="carousel-btn next">&#10095;</button>
+      <div class="fade-left"></div>
+      <div class="fade-right"></div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const carousel = document.querySelector(".carousel");
+        const prevBtn = document.querySelector(".prev");
+        const nextBtn = document.querySelector(".next");
+        let index = 0;
+        // Adjust the scroll step to roughly match the card width plus gap
+        const scrollStep = 380;
+  
+        function moveSlide(step) {
+          index += step;
+          // Wrap around if index goes out of bounds
+          if (index >= carousel.children.length) index = 0;
+          if (index < 0) index = carousel.children.length - 1;
+          carousel.style.transform = `translateX(-${index * scrollStep}px)`;
+        }
+  
+        let autoSlide = setInterval(() => moveSlide(1), 3000);
+  
+        nextBtn.addEventListener("click", () => {
+          moveSlide(1);
+          resetAutoSlide();
+        });
+  
+        prevBtn.addEventListener("click", () => {
+          moveSlide(-1);
+          resetAutoSlide();
+        });
+  
+        function resetAutoSlide() {
+          clearInterval(autoSlide);
+          autoSlide = setInterval(() => moveSlide(1), 3000);
+        }
+  
+        window.addEventListener("resize", () => {
+          carousel.style.transform = `translateX(-${index * scrollStep}px)`;
+        });
+  
+        // 3D Hover Effect for Cards
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          card.addEventListener("mousemove", (e) => {
+            const cardRect = card.getBoundingClientRect();
+            const centerX = cardRect.left + cardRect.width / 2;
+            const centerY = cardRect.top + cardRect.height / 2;
+            const deltaX = (e.clientX - centerX) / 10;
+            const deltaY = (e.clientY - centerY) / 10;
+            card.style.transform = `perspective(1000px) rotateY(${deltaX}deg) rotateX(${-deltaY}deg) scale(1.05)`;
+          });
+  
+          card.addEventListener("mouseleave", () => {
+            card.style.transform = "perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
